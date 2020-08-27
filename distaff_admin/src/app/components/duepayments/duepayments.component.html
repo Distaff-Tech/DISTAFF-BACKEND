@@ -1,0 +1,69 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title text-center">
+            
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+                </span>
+                <h4 class="page-title">Due payments<button class="btn btn-danger pull-rightt m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/paymenthistory" >History</button></h4>
+                <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">  
+                <div class="white-box">
+                    <div class="table-responsive">
+                        <table class="table row-border hover flag" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.duepayment" >
+                        
+                            <thead>
+                                <tr>
+                                    <!-- <th  *ngIf=" _dataService.orderdetail.length == 0"  style="min-width: 250px ">Id</th>
+                                    <th  *ngIf=" _dataService.orderdetail.length > 0">Id</th> -->
+                                    <!-- <th style="min-width: 250px;
+                                    width: 315px;">Id</th> -->
+									<!-- <th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length > 0">Id</th> -->
+                                    <th>User</th>
+                                    <th>Account Name</th>
+                                    <th>Account Type</th>
+                                    <th>Account Number</th>
+                                    <th>Routing Number</th>
+                                    <th>From Date</th>
+                                    <th>Amount</th>
+                                    <th class="actions_th">Action</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                <tr *ngFor="let cntry of _dataService.duepayment ">
+                                    <td>{{cntry.user.user_name}}</td>
+                                    <td>{{cntry.bank_detail.Account_name}}</td>
+                                    <td>{{cntry.bank_detail.Type}}</td>
+                                    <td>{{cntry.bank_detail.routing_number}}</td>
+                                    <td>{{cntry.bank_detail.acc_number}}</td>
+                                    <td>{{cntry.created_time}}</td>
+                                    <td>$ {{cntry.amount}}</td>
+                                    <td><button class="btn btn-danger pull-left m-l-20 hidden-xs hidden-sm waves-effect waves-light" routerLink="/duepayment" (click)="clearPayment(cntry.id)">Clear Due Payment</button></td>
+                                   <!-- <td>{{cntry.image != "" ? image =cntry.image : image= "/assets/profile_image.jpg"}} <img src=""/></td> -->
+                                    
+                                </tr>
+                            </tbody>
+                            <!-- <div *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0"><tbody><h2>No Country Found.</h2></tbody></div> -->
+                        </table>
+                        <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></!--pagination-controls>-->
+                        <ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="default" color="#118081" type="ball-spin-clockwise">  
+                            <!-- <p style="color: white">Please Wait. </p>   -->
+                            </ngx-spinner> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<app-footer></app-footer>
+

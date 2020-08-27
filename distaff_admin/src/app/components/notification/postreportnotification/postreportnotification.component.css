@@ -1,0 +1,24 @@
+.pull-rightt {
+    float: right !important;
+    margin: -5px -255px 8px 32px !important ;
+    margin-left: 20px;
+    
+  }
+
+  .btn-danger.active, .btn-danger:active, .open>.dropdown-toggle.btn-danger {
+    color: #fff;
+    background-color: #118081;
+    border-color: #118081;
+}
+
+.btn-danger{
+    background: #D3D3D3;
+    border: 1px solid #D3D3D3;
+}
+
+.btn-col{
+  color: #fff;
+  background-color: #118081;
+  border-color: #118081;
+
+}

@@ -1,0 +1,35 @@
+
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+<div class="container-fluid">
+    <div class="row bg-title text-center">
+        <span class="back_arrow" style="float: left;padding-top: 16px;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+        </span>
+        <h4 class="page_heading">view post</h4>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+            <div class="white-box">
+                <div class="row">
+                    <aside class="col-lg-6 text-center">
+                        <img [attr.src]= '_dataService.postdetail.image == ""|| _dataService.postdetail.image==null ? current_location+"/media/profileimages/No-image-found.jpg" : current_location+_dataService.postdetail.image' style = "height: 500px; width: 500px;"/>
+                    </aside>
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <!-- <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Description :</h3> -->                               
+                            <aside class="edit_content" style="border-width:2px; border-style:ridge;">
+                                <h3 ><b>&nbsp;&nbsp;&nbsp;&nbsp;Description : </b><h5>{{_dataService.postdetail.post_description}}</h5></h3> 
+                                <h3 ><b>&nbsp;&nbsp;&nbsp;&nbsp;Total Likes : </b><h5>{{_dataService.postdetail.total_likes}}</h5></h3> 
+                                <h3 ><b>&nbsp;&nbsp;&nbsp;&nbsp;Total comments : </b><h5>{{_dataService.postdetail.total_comments}}</h5></h3> 
+      
+                            </aside>
+                    </div>
+                    <button class="btn btn-danger pull-left m-l-20 hidden-xs hidden-sm waves-effect waves-light" (click)="deletepromo(_dataService.postdetail.id)">Delete</button>  
+                        
+          
+    </div>
+</div>
+</div>
+<app-footer></app-footer>
+

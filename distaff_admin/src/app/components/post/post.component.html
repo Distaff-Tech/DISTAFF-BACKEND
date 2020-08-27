@@ -1,0 +1,120 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+
+<div class="container-fluid">
+    <!-- <div class="row bg-title">
+        <h2 class="page_heading text-center">Add Coupon</h2>
+    </div> -->
+    <div _ngcontent-qcb-c15="" class="row bg-title text-center">
+        <!-- <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+        </span> -->
+        <h4 _ngcontent-qcb-c15="" class="page_heading">Add Promotional Post</h4></div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row input_form-box">
+        <div class="col-md-12 col-xs-12">
+            <div class="white-box"> 
+                <div class="add_formarea">
+                    <form   [formGroup]="addFilterForm" (ngSubmit)="onSubmit()" name="addFilterForm">               
+                        <div class="row input_form-box">
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                <label class="text-uppercase">Caption</label>
+                                <input value="" class="form-control" formControlName="post_description" maxlength="200" type="text" [ngClass]="{ 'is-invalid': submitted && f.post_description.errors }">
+                                    <div *ngIf="submitted && f.post_description.errors" class="invalid-feedback">
+                                            <div  style="color: red;" *ngIf="f.post_description.errors.required && !touched">Title field is required</div>
+                                    </div>
+                                    <div *ngIf="error_msg && touched" class="invalid-feedback">
+                                        <div  style="color: red;" *ngIf="error_msg && touched">Empty Value is Not Valid</div>
+                                    </div>
+                                </div>
+                            </aside>
+                            
+                            <aside class="col-sm-6">
+                                <div class="form-group">
+                                        <label class="text-uppercase">Image</label>
+                                        <input type="file" class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.logo.errors }" accept=".png, .jpg, .jpeg" />
+                                        <div *ngIf="image_error" class="invalid-feedback">
+                                            <div  style="color: red;" *ngIf="image_error">Image field is required</div>
+                                        </div>
+                                </div>
+                            </aside>
+
+                            
+                        </div>
+                                                
+                        <div class="row">
+        
+                        <aside class="col-sm-5">
+                            <button type="submit" id="upload" class="btn btn-danger big_yellow text-uppercase" >Publish Post</button>
+        
+                        </aside>
+                        </div>
+                        </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bg-title text-center">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <!-- <span class="back_arrow" style="float: left;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+            </span> -->
+            <h4 class="page-title"> history </h4>
+            <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+        </div>
+        
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">  
+            <div class="white-box">
+                <div class="table-responsive">
+                    <table class="table row-border hover flag" datatable [dtOptions]="dtOptions"  *ngIf=" _dataService.promohistory" >
+                    
+                        <thead>
+                            <tr>
+                                <!-- <th  *ngIf=" _dataService.supportlist.length == 0"  style="min-width: 250px ">Id</th>
+                                <th  *ngIf=" _dataService.supportlist.length > 0">Id</th> -->
+                                <!-- <th style="min-width: 250px;
+                                width: 315px;">Id</th> -->
+                                <!-- <th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length > 0">Id</th> -->
+                                
+                                <th class="actions_th">Image</th>
+                                <th >Post Description</th>
+                                <th>Likes</th>
+                                <th>Comment</th>
+                                <th>Date</th>
+                                <th class="actions_th"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <tr *ngFor="let cntry of _dataService.promohistory ">
+                                <td> <img [attr.src]= 'cntry.image.post_images == "" ? current_location+"/media/profileimages/No-image-found.jpg" : current_location+cntry.image.post_images' style="width: 12%;"/></td>
+                                <td>{{cntry.post_description}}</td>
+                                <td>{{cntry.total_likes}}</td>
+                                <td>{{cntry.total_comments}}</td>
+                                <td>{{cntry.created_time}}</td>
+
+                                <td>
+                                    <button class="btn btn-danger pull-left m-l-20 hidden-xs hidden-sm waves-effect waves-light" (click)="ViewPost(cntry.id)">View</button>
+                                    <button class="btn btn-danger pull-left m-l-20 hidden-xs hidden-sm waves-effect waves-light" (click)="deletepromo(cntry.id)">Delete</button>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                        <!-- <div *ngIf="_dataService.countrieslist && _dataService.countrieslist.length==0"><tbody><h2>No Country Found.</h2></tbody></div> -->
+                    </table>
+                    <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></!--pagination-controls>-->
+                    <ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="default" color="#118081" type="ball-spin-clockwise">  
+                        <!-- <p style="color: white">Please Wait. </p>   -->
+                        </ngx-spinner>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- /.row -->
+    
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,173 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+<div class="container-fluid">
+    <div class="row bg-title text-center">
+        <span class="back_arrow" style="float: left;padding-top: 16px;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+        </span>
+        <h4 class="page_heading">Profile Page</h4>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="row">
+                    <aside class="col-lg-4 text-center">
+                        <img [attr.src]= '_dataService.userdetail.image == ""|| _dataService.userdetail.image==null ? current_location+"/media/profileimages/No-image-found.jpg" : current_location+_dataService.userdetail.image' class="thumb-lg img-circle" style = "height: 150px; width: 150px;"/>
+                    </aside>
+                    <aside class="col-lg-8">  
+                            <aside class="edit_content">
+                                <label>Username :</label>
+                                <h5>{{_dataService.userdetail.user_name}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>                         
+                            <aside class="edit_content">
+                                <label>Full Name :</label>
+                                <h5>{{_dataService.userdetail.fullname}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>
+                        
+                            <aside class="edit_content">
+                                <label>Email :</label>
+                                <h5>{{_dataService.userdetail.email}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                                                                   
+                    </aside>
+                    
+          
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="row">
+                    <aside class="col-lg-4 text-center">
+                        <label>Bank Details</label>
+                    </aside>
+                    
+                    <aside class="col-lg-8">  
+                            <aside class="edit_content">
+                                <label>Acc Name :</label>
+                                <h5>{{_dataService.userbank.Account_name}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>                         
+                            <aside class="edit_content">
+                                <label>Type :</label>
+                                <h5>{{_dataService.userbank.Type}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>
+                        
+                            <aside class="edit_content">
+                                <label>Routing No :</label>
+                                <h5>{{_dataService.userbank.routing_number}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                            <aside class="edit_content">
+                                <label>Acc No :</label>
+                                <h5>{{_dataService.userbank.acc_number}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                                                                   
+                    </aside>
+                    
+          
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="row">
+                    <aside class="col-lg-4 text-center">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Primary Address</label>
+                    </aside>
+                    
+                    <aside class="col-lg-8">  
+                            <aside class="edit_content">
+                                <label>First Name :</label>
+                                <h5>{{_dataService.primaryaddress.first_name}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>                         
+                            <aside class="edit_content">
+                                <label>Last Name :</label>
+                                <h5>{{_dataService.primaryaddress.last_name}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>
+                            <aside class="edit_content">
+                                <label>PostalCode:</label>
+                                <h5> {{_dataService.primaryaddress.postal_code}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                        
+                            <aside class="edit_content">
+                                <label>Address :</label>
+                                <h5>{{_dataService.primaryaddress.address}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                            
+                            <aside class="edit_content">
+                                <label>Phone :</label>
+                                <h5>{{_dataService.primaryaddress.phone}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                            <aside class="edit_content">
+                                <label>City :</label>
+                                <h5>{{_dataService.primaryaddress.city}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                            
+                                                                   
+                    </aside>
+                    
+          
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">  
+            <div class="white-box">
+                <div class="table-responsive">
+                    <label>Secondary Addresses</label>
+                    <table class="table row-border hover flag">
+                    
+                        <thead>
+                            <tr>
+                                <!-- <th  *ngIf=" _dataService.userposts.length == 0"  style="min-width: 250px ">Id</th>
+                                <th *ngIf=" _dataService.userposts.length > 0" >Id</th> -->
+                                <!-- <th style="min-width: 250px;
+                                width: 315px;">Id</th> -->
+                                <!-- <th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length > 0">Id</th> -->
+                                <th class="actions_th">First Name</th>
+                                <th class="country_flag_th">Last Name</th>
+                                <th style="max-width: 150px;">Address</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                                <th>Postal Code</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <tr *ngFor="let cntry of _dataService.useraddresses ">
+
+                                <td>{{cntry.first_name}}</td>
+                                <td >{{cntry.last_name}}</td>
+                                <td>{{cntry.phone}}</td>
+                                <td>{{cntry.address}}</td>
+                                <td>{{cntry.city}}</td>
+                                <td>{{cntry.postal_code}}</td>
+                            </tr>
+                        </tbody>
+                        <!-- <div *ngIf="_dataService.userposts && _dataService.userposts.length==0"><tbody><h2></h2></tbody></div> -->
+                    </table>
+                    <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></!--pagination-controls>-->
+                    <ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="default" color="#118081" type="ball-spin-clockwise">  
+                        <!-- <p style="color: white">Please Wait. </p>   -->
+                        </ngx-spinner> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+</div>
+<app-footer></app-footer>

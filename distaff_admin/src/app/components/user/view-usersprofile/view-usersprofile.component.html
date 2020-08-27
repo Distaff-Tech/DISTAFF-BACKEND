@@ -1,0 +1,118 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div id="page-wrapper">
+<div class="container-fluid">
+    <div class="row bg-title text-center">
+        <span class="back_arrow" style="float: left;padding-top: 16px;"><a (click)="backClicked()" style="color: #000;"> <i class="fa fa-arrow-left" aria-hidden="true" style="font-size:20px ;"></i></a>
+        </span>
+        <h4 class="page_heading">Profile Page</h4>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="row">
+                    <aside class="col-lg-4 text-center">
+                        <img [attr.src]= '_dataService.userdetail.image == ""|| _dataService.userdetail.image==null ? current_location+"/media/profileimages/No-image-found.jpg" : current_location+_dataService.userdetail.image' class="thumb-lg img-circle" style = "height: 150px; width: 150px;"/>
+                    </aside>
+                    <aside class="col-lg-8">  
+                            <aside class="edit_content">
+                                <label>Username :</label>
+                                <h5>{{_dataService.userdetail.user_name}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>                         
+                            <aside class="edit_content">
+                                <label>Full Name :</label>
+                                <h5>{{_dataService.userdetail.fullname}}</h5>    
+                                <div class="clear"></div>                                
+                            </aside>
+                        
+                            <aside class="edit_content">
+                                <label>Email :</label>
+                                <h5>{{_dataService.userdetail.email}}</h5>
+                                <div class="clear"></div> 
+                            </aside>
+                            <aside class="edit_content">
+                                <label>About Me :</label>
+                                <h5>{{_dataService.userdetail.about_me}}</h5>
+                                <div class="clear"></div> 
+                            </aside>      
+                                                                   
+                    </aside>
+          
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-8">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Followers</h3>
+                <ul class="list-inline two-part">
+                    
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class=" text-success">{{_dataService.userdetail.total_follower}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-8">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Following</h3>
+                <ul class="list-inline two-part">
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class=" text-purple">{{_dataService.userdetail.total_following}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-8">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Posts</h3>
+                <ul class="list-inline two-part">
+                   
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class=" text-purple">{{_dataService.postcount}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">  
+            <div class="white-box">
+                <div class="table-responsive">
+                    <table class="table row-border hover flag" datatable [dtOptions]="dtOptions" *ngIf=" _dataService.userposts" >
+                    
+                        <thead>
+                            <tr>
+                                <!-- <th  *ngIf=" _dataService.userposts.length == 0"  style="min-width: 250px ">Id</th>
+                                <th *ngIf=" _dataService.userposts.length > 0" >Id</th> -->
+                                <!-- <th style="min-width: 250px;
+                                width: 315px;">Id</th> -->
+                                <!-- <th  *ngIf="_dataService.countrieslist && _dataService.countrieslist.length > 0">Id</th> -->
+                                <th class="actions_th">Image</th>
+                                <th class="country_flag_th">Price</th>
+                                <th style="max-width: 150px;">Post Description</th>
+                                <th>Total Likes</th>
+                                <th>Total Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <tr *ngFor="let cntry of _dataService.userposts ">
+                                <td><img [attr.src]= 'cntry.image == ""|| cntry.image==null ? current_location+"/media/profileimages/No-image-found.jpg" : current_location+cntry.image' class="thumb-lg img-circle" style = "height: 300px; width: 300px;"/></td>
+                                <td>${{cntry.price}}</td>
+                                <td >{{cntry.post_description}}</td>
+                                <td>{{cntry.total_likes}}</td>
+                                <td>{{cntry.total_comments}}</td>
+                            </tr>
+                        </tbody>
+                        <!-- <div *ngIf="_dataService.userposts && _dataService.userposts.length==0"><tbody><h2></h2></tbody></div> -->
+                    </table>
+                    <!--pagination-controls class="pagination" (pageChange)="currentPage=$event"></!--pagination-controls>-->
+                    <ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="default" color="#118081" type="ball-spin-clockwise">  
+                        <!-- <p style="color: white">Please Wait. </p>   -->
+                        </ngx-spinner> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</div>
+<app-footer></app-footer>

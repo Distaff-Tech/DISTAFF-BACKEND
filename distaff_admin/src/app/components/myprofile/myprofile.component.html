@@ -1,0 +1,54 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        
+        <div class="row bg-title">
+            <div class=" col-xs-12 text-center">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <h4 class="page-title ">My Profile<a routerLink="/editProfile" id="upload" class="btn btn-danger pull-rightt m-l-20 hidden-xs hidden-sm waves-effect waves-light">Edit Profile</a> </h4>
+            </div>
+        </div>
+            
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <div class="row">
+                        <aside class="col-lg-4 text-center">
+                            <img [attr.src]= '_dataService.currentadmin.image == "" ? current_location+"/media/profileimages/No-image-found.jpg" : current_location+_dataService.currentadmin.image' alt="image" class="img-circle profile_image" id="viewProfileImage"/>
+                        </aside>
+                        <aside class="col-lg-8">                           
+                                <aside class="edit_content">
+                                    <label>First Name :</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.first_name}}</h5>    
+                                    <div class="clear"></div>                                
+                                </aside>
+                                <aside class="edit_content">
+                                    <label>Last Name :</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.last_name}}</h5>
+                                    <div class="clear"></div> 
+                                </aside>                         
+                                <aside class="edit_content">
+                                    <label>Email :</label>
+                                    <h5 *ngFor="let admin of _dataService.adminprofile; let myIndex = index">{{admin.email}}</h5>
+                                    <div class="clear"></div> 
+                                </aside>   
+                                                                       
+                        </aside>
+                            
+                    </div>
+                    
+                </div>
+              
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+
+<app-footer></app-footer>
