@@ -161,22 +161,7 @@ def SignUp(request):
                     try:
                         subject = "Verification Mail"
 
-                        email_body = """\
-                            <html>
-                                <head></head>
-                                <body>
-                                    <h2>Dear Distaff User, </h2>
-                                    <p> To initiate the verification process,
-                                    Please click the link below:</p>
-                                    <p> %s </p>
-                                    <p>If clicking the link above doesn't work, please copy and paste the URL in a new browser
-                                    window instead.</p>
-                                    <p>Sincerely, </p>
-                                    <p>Distaff Team 
-                                    </p>
-                                </body>
-                            </html>
-                            """ %(verifyLinkUrl)
+                        email_body = "Hello, this is the verification link : %s" %(verifyLinkUrl)
                         email = EmailMessage('Email Verification Mail! ', email_body, to=list)
                         email.content_subtype = "html"
                         response = email.send()
